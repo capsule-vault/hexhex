@@ -9,14 +9,14 @@ const Home = () => {
       </Head>
 
       <header
-        className="flex justify-between items-center container mx-auto py-10 text-4xl"
+        className="flex flex-col sm:flex-row justify-between items-center container mx-auto pt-8 sm:py-10"
         style={{ fontFamily: 'Academy Engraved LET' }}
       >
-        <div>HexHex</div>
-        <div className="flex justify-center items-center">
+        <div className="text-4xl">HexHex</div>
+        <div className="flex flex-col sm:flex-row justify-center items-center text-2xl sm:text-4xl">
           <div>Opensea</div>
-          <div className="pl-16">Twitter</div>
-          <div className="pl-16">Contract</div>
+          <div className="sm:pl-16">Twitter</div>
+          <div className="sm:pl-16">Contract</div>
         </div>
       </header>
 
@@ -82,7 +82,10 @@ const Home = () => {
                 ),
               )
               .map((hexs, i) => (
-                <div key={i} className="bg-black h-96 px-10 py-8">
+                <div
+                  key={i}
+                  className="col-span-3 sm:col-span-1 bg-black h-96 px-10 py-8"
+                >
                   {hexs.map((hex, j) => (
                     <div key={j} className="mb-2">
                       {hex}
