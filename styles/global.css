@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Academy Engraved LET";
+  src: url("/Academy-Engraved-LET.ttf") format("woff");
+}
+
+@font-face {
+  font-family: "Andale Mono";
+  src: url("/Andale-Mono.ttf") format("woff");
+}
+
+body {
+  background-color: #3939FF;
+  color: #FFFFFF;
+}

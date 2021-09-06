@@ -1,82 +1,105 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <>
       <Head>
-        <title>Create Next App</title>
+        <title>HexHex</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+      <header
+        className="flex justify-between items-center container mx-auto py-10 text-4xl"
+        style={{ fontFamily: 'Academy Engraved LET' }}
+      >
+        <div>HexHex</div>
+        <div className="flex justify-center items-center">
+          <div>Opensea</div>
+          <div className="pl-16">Twitter</div>
+          <div className="pl-16">Contract</div>
+        </div>
+      </header>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
+      <main className="container mx-auto">
+        <div className="flex flex-col items-center text-center">
+          <h1
+            className="mt-20 text-7xl"
+            style={{
+              fontFamily: 'Academy Engraved LET',
+            }}
           >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
+            HexHex (beyond colors)
+          </h1>
+          <p
+            className="mt-12 text-4xl"
+            style={{
+              fontFamily: 'Academy Engraved LET',
+            }}
           >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
+            HexHex (beyond colors) is a collection of 6,666 arrays of 6
+            hexadecimal codes stored on chain. Images and other functionality
+            are intentionally omitted for others to interpret.
+          </p>
+          <p className="mt-12 text-lg" style={{ fontFamily: 'Andale Mono' }}>
+            /<br />
+            The combination is conventionally utilized to represent a single
+            shade of color. the maximum possible characters in a single
+            character is 16: from 0-9 and A-F. In standard #RRGGBB notation,
+            there are thus 256^3 color combinations available, or 16,777,216.
+          </p>
+          <p className="mt-4 text-lg" style={{ fontFamily: 'Andale Mono' }}>
+            /<br />
+            Any data, however, could potentially be remapped to these
+            combinations, beyond colors. The possible amount of unique HexHex is
+            256^3^6 = 2.23e+43, or more than 1 trillion squared.
+          </p>
+          <button className="relative flex justify-center items-center w-72 h-20 my-12">
+            <div className="absolute left-0 top-0 right-0 bottom-0 bg-black rounded-full filter hover:blur-md"></div>
+            <div
+              className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl uppercase"
+              style={{ fontFamily: 'Andale Mono' }}
+            >
+              Mint
+            </div>
+          </button>
+        </div>
+        <div>
+          <div
+            className="mb-8 text-center"
+            style={{ fontFamily: 'Andale Mono' }}
           >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            Example HexHex:
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            {new Array(3)
+              .fill(null)
+              .map(() =>
+                new Array(6).fill(null).map(
+                  () =>
+                    `#${Math.floor(Math.random() * 16 ** 6)
+                      .toString(16)
+                      .toUpperCase()}`,
+                ),
+              )
+              .map((hexs) => (
+                <div className="bg-black h-96 px-10 py-8">
+                  {hexs.map((hex) => (
+                    <div className="mb-2">{hex}</div>
+                  ))}
+                </div>
+              ))}
+          </div>
         </div>
       </main>
 
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
+      <footer
+        className="container mx-auto py-8 text-4xl text-center"
+        style={{ fontFamily: 'Academy Engraved LET' }}
+      >
+        HexHex
       </footer>
-    </div>
-  )
-}
+    </>
+  );
+};
+
+export default Home;
