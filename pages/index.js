@@ -81,10 +81,12 @@ const Home = () => {
                       .toUpperCase()}`,
                 ),
               )
-              .map((hexs) => (
-                <div className="bg-black h-96 px-10 py-8">
-                  {hexs.map((hex) => (
-                    <div className="mb-2">{hex}</div>
+              .map((hexs, i) => (
+                <div key={i} className="bg-black h-96 px-10 py-8">
+                  {hexs.map((hex, j) => (
+                    <div key={j} className="mb-2">
+                      {hex}
+                    </div>
                   ))}
                 </div>
               ))}
