@@ -14,9 +14,25 @@ const Home = () => {
       >
         <div className="">HexHex</div>
         <div className="flex flex-col sm:flex-row justify-center items-center">
-          <div>Opensea</div>
-          <div className="sm:pl-16">Twitter</div>
-          <div className="sm:pl-16">Contract</div>
+          <a href="https://opensea.io" target="_blank" rel="noreferrer">
+            Opensea
+          </a>
+          <a
+            className="sm:pl-16"
+            href="https://twitter.com/HexHexToken"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Twitter
+          </a>
+          <a
+            className="sm:pl-16"
+            href="https://etherscan.io"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Contract
+          </a>
         </div>
       </header>
 
@@ -41,6 +57,13 @@ const Home = () => {
             <br />
             Images and other functionality are intentionally omitted for others
             to interpret.
+          </p>
+          <p className="mt-4 text-[16px]" style={{ fontFamily: 'Andale Mono' }}>
+            /<br />
+            HexHex #0 to #7999 are claimable by loot owners for free for just
+            gas,
+            <br />
+            and #8000 to #15999 are mintable by anyone for 0.01 ETH each.
           </p>
           <p className="mt-4 text-[16px]" style={{ fontFamily: 'Andale Mono' }}>
             /<br />
