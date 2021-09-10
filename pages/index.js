@@ -323,7 +323,7 @@ const Home = () => {
             >
               <div className="absolute left-0 top-0 right-0 bottom-0 bg-black rounded-full filter hover:blur-md"></div>
               <div
-                className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[26px] uppercase"
+                className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[26px] uppercase pointer-events-none"
                 style={{ fontFamily: 'Andale Mono' }}
               >
                 {address
