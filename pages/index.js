@@ -52,7 +52,7 @@ const Home = () => {
               fontFamily: 'Academy Engraved LET',
             }}
           >
-            HexHex (beyond colors) is a collection of 6,666 arrays of 6
+            HexHex (beyond colors) is a collection of 16,000 arrays of 6
             hexadecimal codes stored on chain.
             <br />
             Images and other functionality are intentionally omitted for others
