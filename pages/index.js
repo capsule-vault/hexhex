@@ -347,10 +347,10 @@ const Home = () => {
             </button>
             <div style={{ fontFamily: 'Andale Mono' }}>{`${
               numRemainingClaimableTokensForAddress > 0
-                ? `${numRemainingClaimableTokensForAddress} public mints remaining`
+                ? `${numRemainingClaimableTokensForAddress} left for you to claim`
                 : `${numRemainingMintableTokens}/${hexHexMaxSupply
                     .sub(hexHexMaxSupplyClaimable)
-                    .toNumber()} left for you to claim`
+                    .toNumber()} public mints remaining`
             } `}</div>
           </div>
         </div>
