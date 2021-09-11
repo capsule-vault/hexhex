@@ -93,7 +93,7 @@ const Home = () => {
     { fallbackData: ethers.constants.Zero, refreshInterval: 1000 },
   );
   const numRemainingMintableTokens = useMemo(
-    () => hexHexMaxSupply.sub(hexHexNextMintableTokenId).toNumber(),
+    () => hexHexMaxSupply.sub(hexHexNextMintableTokenId).add(1).toNumber(),
     [hexHexMaxSupply, hexHexNextMintableTokenId],
   );
 
@@ -249,7 +249,11 @@ const Home = () => {
       >
         <div className="">HexHex</div>
         <div className="flex flex-col sm:flex-row justify-center items-center">
-          <a href="https://opensea.io" target="_blank" rel="noreferrer">
+          <a
+            href="https://opensea.io/collection/hexhex"
+            target="_blank"
+            rel="noreferrer"
+          >
             Opensea
           </a>
           <a
@@ -262,7 +266,7 @@ const Home = () => {
           </a>
           <a
             className="sm:pl-16"
-            href="https://etherscan.io"
+            href="https://etherscan.io/address/0x9abda0444d0ce0b3e1df5bd6493a469c9140b7d5"
             target="_blank"
             rel="noreferrer"
           >
@@ -295,10 +299,10 @@ const Home = () => {
           </p>
           <p className="mt-4 text-[16px]" style={{ fontFamily: 'Andale Mono' }}>
             /<br />
-            HexHex #0 to #7999 are claimable by loot owners for free for just
+            HexHex #1 to #8000 are claimable by loot owners for free for just
             gas,
             <br />
-            and #8000 to #15999 are mintable by anyone for 0.01 ETH each.
+            and #8001 to #16000 are mintable by anyone for 0.01 ETH each.
           </p>
           <p className="mt-4 text-[16px]" style={{ fontFamily: 'Andale Mono' }}>
             /<br />
