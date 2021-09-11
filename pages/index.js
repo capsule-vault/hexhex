@@ -92,6 +92,10 @@ const Home = () => {
     contractExecuter(ref.current.hexHex, 'nextMintableTokenId'),
     { fallbackData: ethers.constants.Zero, refreshInterval: 1000 },
   );
+  const numRemainingMintableTokens = useMemo(
+    () => hexHexMaxSupply.sub(hexHexNextMintableTokenId).toNumber(),
+    [hexHexMaxSupply, hexHexNextMintableTokenId],
+  );
 
   const { data: hexHexPrice } = useSWR(
     '/hexHex/price',
@@ -183,7 +187,7 @@ const Home = () => {
     return () => {
       disconnect();
     };
-  }, [disconnect]);
+  }, [connect, disconnect]);
 
   const handleCtaBtnClick = useCallback(async () => {
     if (!address) {
@@ -199,7 +203,7 @@ const Home = () => {
           hexHexIsClaimedByLootIds.find(({ isClaimed }) => !isClaimed).lootId,
           { gasLimit: Math.floor(1.2 * gasLimit) },
         );
-      } else {
+      } else if (numRemainingMintableTokens > 0) {
         const gasLimit = await ref.current.hexHex.estimateGas.mint(address, {
           value: hexHexPrice,
         });
@@ -213,6 +217,7 @@ const Home = () => {
     address,
     connect,
     numRemainingClaimableTokensForAddress,
+    numRemainingMintableTokens,
     hexHexIsClaimedByLootIds,
     hexHexPrice,
   ]);
@@ -318,10 +323,15 @@ const Home = () => {
           </p>
           <div className="my-10">
             <button
-              className="relative flex justify-center items-center w-72 h-20 mb-2"
+              className="relative flex justify-center items-center w-72 h-20 mb-2 disabled:opacity-50"
               onClick={handleCtaBtnClick}
+              disabled={numRemainingMintableTokens === 0}
             >
-              <div className="absolute left-0 top-0 right-0 bottom-0 bg-black rounded-full filter hover:blur-md"></div>
+              <div
+                className={`absolute left-0 top-0 right-0 bottom-0 bg-black rounded-full filter  ${
+                  numRemainingMintableTokens > 0 && 'hover:blur-md'
+                }`}
+              ></div>
               <div
                 className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[26px] uppercase pointer-events-none"
                 style={{ fontFamily: 'Andale Mono' }}
@@ -329,18 +339,18 @@ const Home = () => {
                 {address
                   ? numRemainingClaimableTokensForAddress > 0
                     ? 'Claim'
-                    : 'Mint'
+                    : numRemainingMintableTokens > 0
+                    ? 'Mint'
+                    : 'Sold Out'
                   : 'Connect'}
               </div>
             </button>
             <div style={{ fontFamily: 'Andale Mono' }}>{`${
               numRemainingClaimableTokensForAddress > 0
-                ? `${numRemainingClaimableTokensForAddress} left`
-                : `${hexHexMaxSupply
-                    .sub(hexHexNextMintableTokenId)
-                    .toNumber()}/${hexHexMaxSupply
+                ? `${numRemainingClaimableTokensForAddress} public mints remaining`
+                : `${numRemainingMintableTokens}/${hexHexMaxSupply
                     .sub(hexHexMaxSupplyClaimable)
-                    .toNumber()} left`
+                    .toNumber()} left for you to claim`
             } `}</div>
           </div>
         </div>
